@@ -8,7 +8,7 @@ In this example, we are using Windows 10 (64 bit).
 
 On Windows I suggest you use the release binary unless you know what you're doing regarding code and compilers.
 
-1) Download the [release binary here](https://github.com/MyHush/hush3/releases/) and unextract the zip file.
+1) Download the [release binary here](https://git.hush.is/hush/hush3/releases) and unextract the zip file. (Note: for 3.6.0 please choose the larger file)
 
 1) The data (blockchain, configuration, etc.) will be stored in 'C:\Users\<YOUR_USERNAME>/AppData/Roaming/Komodo/HUSH3' (on Windows) by default.
 
@@ -25,10 +25,7 @@ On Windows I suggest you use the release binary unless you know what you're doin
     rpcallowip=127.0.0.1
     rpcbind=127.0.0.1
 
-    addnode=explorer.myhush.org
-    addnode=stilgar.leto.net
-    addnode=dnsseed.bleuzero.com
-    addnode=dnsseed.hush.quebec
+    addnode=199.247.28.148
     ```
 
 ### Now we can start hushd daemon 

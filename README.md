@@ -29,7 +29,7 @@ If you are looking to setup a Hush wallet, then you have the following two choic
 - [Setup Hush lite wallet featuring Hushchat](sdl.md)
 
 As for mobile wallets:
-- Hush Android app is a companion app which pairs with either of the above two options.
+- [Hush Android app](sda.md) is a companion app which pairs with either of the above two options. A mobile lite wallet is in development.
 - Hush does not have an iOS app yet, care to make one?
 
 #### Servers?

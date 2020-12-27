@@ -6,6 +6,8 @@ In this example, we are using Ubuntu 18.04 (64 bits). This will be different on 
 
 ### Setup hush user account
 
+I would consider this optional as you can run hushd as your own user account. Creating a separate user account is great for added security and recommended for servers.
+
 1) Log in as user account with sudo access and add a user 'hush' under which the daemon (hushd) will run :
 
     ```
@@ -19,8 +21,7 @@ In this example, we are using Ubuntu 18.04 (64 bits). This will be different on 
     $ sudo adduser hush sudo
     ```
 
-3) Switch to user 'hush'
-su - hush
+3) Switch to user 'hush': su - hush
 
 4) Update your system
 
@@ -38,8 +39,8 @@ The next step is up to you. I personally like to compile from source and recomme
 If you just want to install an "exe" file, run it, and go, then I would recommend trying the binary install.
 
 On Ubuntu 18.04/20.04 (Debian?), try this:
-$ wget https://github.com/MyHush/hush3/releases/download/v3.5.2/hush-3.5.2-amd64.deb
-$ sudo dpkg -i hush-3.5.2-amd64.deb
+- go to [hush3 releases page](https://git.hush.is/hush/hush3/releases) and get latest version
+- then install using ```dpkg -i hush-3.x.x-amd64.deb```
 
 #### compile yourself
 
@@ -93,16 +94,7 @@ For Arch Linux, there are [hush3](https://aur.archlinux.org/packages/hush3/) and
     rpcallowip=127.0.0.1
     rpcbind=127.0.0.1
 
-    addressindex=1
-    spentindex=1
-    timestampindex=1
-
-    showmetrics=1
-
-    addnode=explorer.myhush.org
-    addnode=stilgar.leto.net
-    addnode=dnsseed.bleuzero.com
-    addnode=dnsseed.hush.quebec
+    addnode=199.247.28.148
     ```
 
 ### Now we can start hushd daemon 
