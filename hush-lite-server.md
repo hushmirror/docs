@@ -4,7 +4,7 @@ This write up will explain how to setup your own light (lite) wallet server to u
 
 ### Install & Setup your Linux server or VPS
 
-Install your preferred distro. In this example I am using a VPS running Ubuntu 20.04, so these instructions should be very similar for Debian-based distros.
+Install your preferred distro. In this example I am using a VPS running Ubuntu 20.04, so these instructions should be very similar for Debian-based distros. This setup requires a VPS with at least 2 vCPUs and 4GB of RAM to compile and run the software.
 
 ##### Pre Steps
 
