@@ -7,7 +7,7 @@ This documentation is how you setup Silent Dragon Lite (SDL), which is the Hush 
 **Make sure you make a paper backup of your seed phrases!**
 
 - For Binary releases, [the download link is here](https://git.hush.is/hush/SilentDragonLite/releases)
-- For source code so you can compile your own, [the link is here](https://git.hush.is/hush/SilentDragonLite)
+- For source code so you can compile your own, [the link is here](https://git.hush.is/hush/SilentDragonLite/src/branch/master/README.md)
 - For legacy AppImage releases, [the download link is here](https://github.com/MyHush/SilentDragonLite/releases)
 
 ## After you install

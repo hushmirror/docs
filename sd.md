@@ -14,5 +14,5 @@ First you want to setup the Hush daemon (hushd). This enables your computer to d
 
 **Make sure you make a paper backup of your seed phrases!**
 
-Pick either the [binary release](https://git.hush.is/hush/SilentDragon/releases) or [compile it yourself](https://git.hush.is/hush/SilentDragon/blob/master/README.md). I personally compile but some prefer binaries.
+Pick either the [binary release](https://git.hush.is/hush/SilentDragon/releases) or [compile it yourself](https://git.hush.is/hush/SilentDragon/src/branch/master/README.md). I personally compile but some prefer binaries.
 
