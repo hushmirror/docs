@@ -20,7 +20,7 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
     $ sudo apt install golang nginx
     ```
 
-1. Enable nginx thru your firewall. Look up more info on ufw if needed.
+1. Enable nginx thru your firewall and open port 443 (HTTPS). Look up more info on ufw if needed.
 
     ```
     $ sudo ufw status
@@ -28,64 +28,9 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 
 ##### Setup Hushd
 
-1. Setup hushd user account with a root/sudo account
+1. Setup hushd by [following these instructions](hushd-desktop-linux.md) and make sure to grant the hush user sudo access.
 
-    - Create hush user account by ```useradd -r -m -s /bin/bash -d /home/hush hush```
-    - Change the password with ```passwd hush```
-    - Add user account hush to sudo list ```sudo visudo```
-
-1. Start a screen session and change to user hush with ```sudo -u hush -s```
-
-###### Compile or binary?
-
-1. Now you can compile the Hush daemon to get the cutting edge technology or... you can get a binary which is a little older.
-
-1. I recommend compiling it. For Ubuntu 18.04 or 20.04, use the following:
-
-    ```
-    # Install build depedencies
-    $ sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python zlib1g-dev wget bsdmainutils automake curl unzip nano libsodium-dev
-
-    # Pull
-    $ git clone https://git.hush.is/hush/hush3.git
-    $ cd hush3
-
-    # Build
-    $./build.sh -j$(nproc)			replace $(nproc) by the number of processor (example : 4)
-    ```
-
-    * Or if you choose a binary then Download and setup the Hush daemon [hushd Version 3.x (choose latest release at link, 3.5.2 as of this writing)](https://github.com/MyHush/hush3/releases)
-
-    ```
-
-    $ wget https://github.com/MyHush/hush3/releases/download/v3.5.2/hush-3.5.2-amd64.deb
-    $ sudo dpkg -i hush-3.5.2-amd64.deb
-    ```
-
-1. This is my HUSH3.conf file located in ~/.komodo/HUSH3/HUSH3.conf. I would change the values below with CHANGETHIS appended and you can change the rpcport if you'd like:
-
-    ```
-    rpcuser=user-CHANGETHIS
-    rpcpassword=pass-CHANGETHIS
-    rpcport=18031
-    server=1
-    daemon=0
-    txindex=1
-    rpcworkqueue=256
-    rpcallowip=127.0.0.1
-    rpcbind=127.0.0.1
-
-    addressindex=1
-    spentindex=1
-    timestampindex=1
-
-    showmetrics=1
-
-    addnode=explorer.myhush.org
-    addnode=stilgar.leto.net
-    addnode=dnsseed.bleuzero.com
-    addnode=dnsseed.hush.quebec
-    ```
+1. Start a screen session and change to user hush with ```sudo -u hush -s```.
 
 1. Run hushd at the command line. You should see a bunch of text scrolling.
 
@@ -122,7 +67,7 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
         
         location / {
-            # Replace localhost:9067 with the address and port of your gRPC server if using a custom port
+            # Replace your_host.net:9067 with the address and port of your gRPC server if using a custom port
             grpc_pass grpc://your_host.net:9067;
         }
     }
