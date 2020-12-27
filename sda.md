@@ -24,3 +24,5 @@ You will need to do the following steps on your computer and phone to use SDA.
 
 1. Now you can send and receive Hush on your Android phone.
 
+<img height=50% width=50% src="images/SDA.jpg">
+
