@@ -38,6 +38,7 @@ If you know what you're doing, and want to setup a server to help the Hush commu
 
 - [Setup your own Hush Lite Wallet Server](hush-lite-server.md) (**Work in progress**)
 - [Setup your own Hush Wormhole Server](wormhole.md) (**Work in progress**)
+- [Setup your own Hush Seeder Server](https://git.hush.is/hush/hush-seeder) (**Better documentation in progress**)
 
 ## Support Links
 
