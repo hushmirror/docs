@@ -1,20 +1,18 @@
 # Silent Dragon Lite IN THE RAW (SDL-RAW)
 
-This documentation is how you setup Silent Dragon Lite (SDL) to use a Hush blockchain stored on your local computer... this is advanced and most user will never need to do this...
+This documentation is how you setup Silent Dragon Lite to use a Hush blockchain stored on your local computer, or what I like to call SDL in the RAW. This is advanced and most user will never need to do this. These instructions are written with the assumption that you do not normally run a web server on your local computer and have some basic understanding. If you are more familiar than you can adjust these instructions to your needs.
 
-By using these instructions, it is assumed that you do not normally run a web server on your local computer and have some understanding of what we are doing in these instructions.
-
-** NOTE: YOU WOULD NEVER DO THIS ON AN ACTUAL SERVER. IT WOULD BE INSECURE, BUT HERE IT IS RUNNING LOCALLY so it's alright** 
+**NOTE: YOU WOULD NEVER DO THIS ON AN ACTUAL SERVER. IT WOULD BE INSECURE, BUT HERE IT IS RUNNING LOCALLY so it's alright.**
 
 ## SDL-RAW Setup
 
 ### Setup hushd
 
-We need to the hush daemon (hushd) installed and the complete Hush blockchain downloaded.
+We need install the hush daemon (hushd) and the completely download the Hush blockchain.
 
 1. Setup and get your hushd functional on [Linux](hushd-desktop-linux.md), [Windows](hushd-desktop-windows.md), or Mac.
 
-1. It will take some time to download the blockchain. You can check your download against the latest block height on the [Hush explorer](https://explorer.hush.is/).
+1. Start it up and then it will take some time to download the whole blockchain. You can check your download against the latest block height on the [Hush explorer](https://explorer.hush.is/).
 
 ### Setup lightwalletd
 
@@ -46,26 +44,25 @@ Here we are using a very simple nginx.conf where this web server will not run an
     	worker_connections  1024;
 	}
 
-
 	http {
-    	include       mime.types;
-    	default_type  application/octet-stream;
-    	sendfile        on;
-    	keepalive_timeout  65;
-    	
+		include       mime.types;
+		default_type  application/octet-stream;
+		sendfile        on;
+		keepalive_timeout  65;
+		
 		server {
-        	listen       80 http2;
+	    	listen       80 http2;
 	        server_name  localhost;
-
-        	location / {
-    	   		grpc_pass grpc://localhost:9067;
+	
+	    	location / {
+		   		grpc_pass grpc://localhost:9067;
 	    	}
-
+	
 	        error_page   500 502 503 504  /50x.html;
-    	    location = /50x.html {
-        	    root   /usr/share/nginx/html;
-        	}
-    	}
+		    location = /50x.html {
+	    	    root   /usr/share/nginx/html;
+	    	}
+		}
 	}
 	```
 
