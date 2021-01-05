@@ -23,6 +23,7 @@ Most people visiting this page will be seeking how to setup their wallets. We al
 
 ### Wallets
 
+<img height=50% width=50% src="images/wallet.gif">
 If you are looking to setup a Hush wallet, then you have the following two choices dependant upon your requirements:
 
 - [Setup Hush full node with hushd](sd.md)
@@ -34,18 +35,27 @@ As for mobile wallets:
 
 #### Servers?
 
+<img height=50% width=50% src="images/servers.gif">
 If you know what you're doing, and want to setup a server to help the Hush community, then the following documents are for you:
 
-- [Setup your own Hush Lite Wallet Server](hush-lite-server.md) (**Work in progress**)
+- [Setup your own Hush Lite Wallet Server](hush-lite-server.md)
 - [Setup your own Hush Wormhole Server](wormhole.md) (**Work in progress**)
 - [Setup your own Hush Seeder Server](https://git.hush.is/hush/hush-seeder) (**Better documentation in progress**)
 
+#### Advanced
+
+<img height=50% width=50% src="images/hush-kung-fu.gif">
+If you need some Hush kung-fu, then you know what to do!!! This is not for regular users :)
+
+- [SDL in the RAW](sdl-in-the-raw.md): this howto is to setup an SDL server locally if your system is unable to access any online
+
 ## Support Links
 
-- [Hush general Telegram chat](https://t.me/Hush_Coin)
+- [Hush general Telegram chat](https://t.me/hush_main)
 - [Hush tech support via Telegram](https://t.me/hush8support)
 
 ## How to follow Hush
 
 - [Twitter](https://twitter.com/MyHushTeam)
-- [Telegram](https://t.me/Hush_Coin)
+- [Mastodon](https://fosstodon.org/@myhushteam)
+
