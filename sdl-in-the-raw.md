@@ -33,11 +33,11 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 
 1. Install nginx. Look up how to do that as it differs per operating system.
 
-1. Backup the nginx.conf to a nginx.conf.original before you change it.
-
 1. Start up nginx and open your computer's web browser to http://127.0.0.1 to verify that the nginx test page is working. If not then determine nginx is running and then continue on when it is.
 
-1. Then change the nginx.conf to the following:
+1. Backup the nginx.conf to a nginx.conf.original before you change it.
+
+1. Then delete everything in the nginx.conf and replace with the following:
 
 	```
 	worker_processes  1;
@@ -70,6 +70,11 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 
 1. Restart nginx.
 
+	```
+    $ sudo systemctl restart nginx.service
+
+	```
+
 ### Download and install SDL
 
 **Make sure you make a paper backup of your seed phrases!**
@@ -80,14 +85,13 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 
 ### Configure SDL
 
-Configure it before opening it.
+1. Open SDL, let it do it's thing (whether it connects successfully or not), and then exit it when it's done. This allows SDL to generate a local config file.
 
 1. Locate your SDL config file. On Linux it's usually in ~/.config/Hush/SilentDragonLite.conf. I'm not sure where they reside on Windows or Mac.
 
-1. Now make sure the following is in there:
+1. In the [connection] section, make sure the following is there & we only want one server= line in that section:
 
 	```
-	[connection]
 	server=http://127.0.0.1:9067
 	```
 
