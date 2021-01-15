@@ -14,14 +14,26 @@ This documentation is how you setup an Innosilicon A9 Miner and start mining Hus
 
 1. Setup your pool as follows and ***Note your required port*** from [this list](https://luckpool.net/hush/connect.html) and we're using port 3761 below as this ASIC is 50K/sol.
 
-	```
-    Change URL to "stratum+tcp://na.luckpool.net:3761"
-    Change Worker to your z-address
-    Change Password to X
-	```
+Under Pool 1
+- Change URL to "stratum+tcp://na.luckpool.net:3761"
+- Change Worker to your z-address
+- Change Password to X
+
+Under Pool 2
+- Change URL to "stratum+tcp://eu.luckpool.net:3761"
+- Change Worker to your z-address
+- Change Password to X
+
+Under Pool 3
+- Change URL to "stratum+tcp://ap.luckpool.net:3761"
+- Change Worker to your z-address
+- Change Password to X
+
+We're setting up different geographical Luckpool mining pools here so that the miner can failover from Pool 1 to Pool 2 and from Pool 2 to Pool3.
+
 1. Then click on Update Pools at the bottom of the Mining Pools Settings webpage.
 
 ## Mining support
 
-The Hush Team does not operate or support any mining pools. If you need support of your mining pool, then please seek them out.
+The Hush Team does not operate or support any mining pools. If you need support of your mining pool, then please seek your mining pool support.
 
