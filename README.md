@@ -27,12 +27,16 @@ Most people visiting this page will be seeking how to setup their wallets. We al
 
 If you are looking to setup a Hush wallet, then you have the following two choices:
 
-- [Setup Hush full node with hushd](sd.md)
-- [Setup Hush lite wallet featuring Hushchat](sdl.md)
+- [Setup Hush full node wallet with hushd](sd.md)
+- [Setup Hush lite wallet featuring HushChat](sdl.md)
 
 As for mobile wallets:
 - [Hush Android app](sda.md) is a companion app which pairs with either of the above two options. A mobile lite wallet is in development.
 - Hush does not have an iOS app yet, care to make one?
+
+### HushChat 
+
+Currently [HushChat](https://git.hush.is/hush/hushchat) is only available in the Hush lite wallet and it is in beta mode. If you are interested in testing it, then [please refer to our guide](https://git.hush.is/hush/hushchat/src/branch/master/guide.md).
 
 #### Miners
 
@@ -58,7 +62,7 @@ If you know what you're doing, and want to setup a server to help the Hush commu
 
 If you need some Hush kung-fu, then you know what to do!!! This is not for regular users :)
 
-- [SDL in the RAW](sdl-in-the-raw.md): this howto is to setup an SDL server locally if your system is unable to access any online
+- [SDL in the RAW](advanced/sdl-in-the-raw.md): this howto is to setup an SDL server locally if your system is unable to access any online
 
 ## Support Links
 
