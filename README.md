@@ -52,8 +52,8 @@ If you want to mine Hush, then the following documents are for you:
 
 If you know what you're doing, and want to setup a server to help the Hush community, then the following documents are for you:
 
-- [Setup your own Hush Lite Wallet Server](servers/hush-lite-server.md)
-- [Setup your own Hush Wormhole Server](servers/wormhole.md) (**Work in progress**)
+- [Setup your own Hush Lite Wallet Server](hush-lite-server.md)
+- [Setup your own Hush Wormhole Server](wormhole.md) (**Work in progress**)
 - [Setup your own Hush Seeder Server](https://git.hush.is/hush/hush-seeder) (**Better documentation in progress**)
 
 #### Advanced

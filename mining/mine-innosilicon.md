@@ -14,7 +14,7 @@ This documentation is how to setup an Innosilicon A9 Miner and start mining Hush
 
 1. In the Web UI Menu, click on Settings and then click on Pools.
 
-<img height=100% width=100% src="images/miner-pool-ui.png">
+<img height=100% width=100% src="../images/miner-pool-ui.png">
 
 ### Configure Mining Pools
 
