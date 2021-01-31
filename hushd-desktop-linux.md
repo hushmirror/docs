@@ -12,15 +12,12 @@ This is optional as you can run hushd as your own user account. Creating a separ
     ```shell script
     sudo useradd -r -m -s /bin/bash -d /home/hush hush
     ```
-
 2) Assign a password to the 'hush' user and add to sudo group:
     ```shell script
     sudo passwd hush
     sudo adduser hush sudo
     ```
-
 3) Switch to user 'hush': su - hush
-
 4) Update your system
     ```shell script
     sudo apt-get update
@@ -44,6 +41,7 @@ On Ubuntu 18.04/20.04 (Debian?), try this:
 The choice is up to you, but if the binary does not work then try compiling it yourself.
 
 For Ubuntu 18.04 or 20.04, use the following:
+
     ```shell script
     sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python zlib1g-dev wget bsdmainutils automake curl unzip nano libsodium-dev
     git clone https://git.hush.is/hush/hush3.git
@@ -52,6 +50,7 @@ For Ubuntu 18.04 or 20.04, use the following:
     ```
 
 For Arch Linux, there are [hush3](https://aur.archlinux.org/packages/hush3/) and [hush3-bin](https://aur.archlinux.org/packages/hush3-bin/) AUR packages available, but here is how to compile it yourself:
+
     ```shell script
     sudo pacman -S libsodium lib32-zlib unzip wget git python rust curl
     git clone https://git.hush.is/hush/hush3.git
@@ -87,16 +86,16 @@ Last we run this and it will take some time to sync with the network.
 
 ##### If you installed a binary
 
-    ```shell script
-    which hushd   # then run from where it's installed
-    hushd
-    ```
+```shell script
+which hushd   # then run from where it's installed
+hushd
+```
 
 ##### If you compiled
 
-    ```shell script
-    # run from the src directory of where you compiled it
-    cd src
-    ./hushd
-    ```
+```shell script
+# run from the src directory of where you compiled it
+cd src
+./hushd
+```
 
