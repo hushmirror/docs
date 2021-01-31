@@ -6,7 +6,7 @@ In this example, we are using Ubuntu 18.04 (64 bit). This will be different on M
 
 ### Optional: Setup hush user account
 
-This is optional as you can run hushd as your own user account. Creating a separate user account is great for added security and typically recommended for servers.
+This section is optional as most users will run hushd as your own user account. Creating a separate user account is great for added security and typically recommended for servers.
 
 1) Log in as user account with sudo access and add a user 'hush' under which the daemon (hushd) will run :
     ```shell script
@@ -42,21 +42,21 @@ The choice is up to you, but if the binary does not work then try compiling it y
 
 For Ubuntu 18.04 or 20.04, use the following:
 
-    ```shell script
-    sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python zlib1g-dev wget bsdmainutils automake curl unzip nano libsodium-dev
-    git clone https://git.hush.is/hush/hush3.git
-    cd hush3
-    ./build.sh -j$(nproc)
-    ```
+```shell script
+sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python zlib1g-dev wget bsdmainutils automake curl unzip nano libsodium-dev
+git clone https://git.hush.is/hush/hush3.git
+cd hush3
+./build.sh -j$(nproc)
+```
 
 For Arch Linux, there are [hush3](https://aur.archlinux.org/packages/hush3/) and [hush3-bin](https://aur.archlinux.org/packages/hush3-bin/) AUR packages available, but here is how to compile it yourself:
 
-    ```shell script
-    sudo pacman -S libsodium lib32-zlib unzip wget git python rust curl
-    git clone https://git.hush.is/hush/hush3.git
-    cd hush3
-    ./build.sh -j$(nproc)
-    ```
+```shell script
+sudo pacman -S libsodium lib32-zlib unzip wget git python rust curl
+git clone https://git.hush.is/hush/hush3.git
+cd hush3
+./build.sh -j$(nproc)
+```
 
 ### Setup HUSH3.conf
 
