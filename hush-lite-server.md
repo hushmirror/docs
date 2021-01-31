@@ -1,31 +1,29 @@
 # Running your own hush lite server
+![You have to call me dragon](images/dragon-stepbrothers.gif)
 
 This write up will explain how to setup your own light (lite) wallet server to use with [Hush's SilentDragonLite wallet](https://git.hush.is/hush/SilentDragonLite) or [CLI version](https://git.hush.is/hush/silentdragonlite-cli).
 
 ### Install & Setup your Linux server or VPS
 
-Install your preferred distro. In this example I am using a VPS running Ubuntu 20.04, so these instructions should be very similar for Debian-based distros. This setup requires a VPS with at least 2 vCPUs and 4GB of RAM to compile and run the software.
+Install your preferred distro. In this example I am using a VPS running Ubuntu 20.04, so these instructions should be very similar for any Debian-based distro. This setup requires a VPS with at least 2 vCPUs and 4GB of RAM to compile and run the software.
 
 ##### Pre Steps
 
 1. Install GNU screen
-
-    ```
-    $ sudo apt install screen
+    ```shell script
+    sudo apt install screen
     ```
 
 1. Install the Go language and NGINX.
-
-    ```
-    $ sudo apt install golang nginx
+    ```shell script
+    sudo apt install golang nginx
     ```
 
 1. Enable nginx thru your firewall and open port 443 (HTTPS). Look up more info on ufw if needed.
-
-    ```
-    $ ufw help
-    $ sudo ufw status
-    $ sudo ufw allow 443
+    ```shell script
+    ufw help
+    sudo ufw status
+    sudo ufw allow 443
     ```
 
 ##### Setup Hushd
@@ -35,18 +33,16 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 1. Start a screen session and change to user hush with ```sudo -u hush -s```.
 
 1. Open hushd port in the firewall.
-
-    ```
-    $ sudo ufw allow 18030
-    $ sudo ufw status
+    ```shell script
+    sudo ufw allow 18030
+    sudo ufw status
     ```
 
 1. Run hushd at the command line. You should see a bunch of text scrolling.
 
 1. Then check if the Hush blockchain is downloading by noticing if the blockchain directory is increasing.
-
-    ```
-    $ du -h ~/.komodo/HUSH3/blocks/
+    ```shell script
+    du -h ~/.komodo/HUSH3/blocks/
     ```
 
 1. The blockchain download will take some time, so feel free to take a break and wait or open another terminal (or GNU screen) and continue to install Hush lightwalletd.
@@ -54,21 +50,18 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 ##### Setup Lightwalletd
 
 1. Then as user hush ```sudo -u hush -s``` download the [Hush Lightwalletd](https://git.hush.is/hush/lightwalletd)
-
-    ```
-    $ git clone https://git.hush.is/hush/lightwalletd
+    ```shell script
+    git clone https://git.hush.is/hush/lightwalletd
     ```
 
 1. Install these packages for certbot
-
-    ```
-    $ sudo apt install certbot python3-certbot-nginx
+    ```shell script
+    sudo apt install certbot python3-certbot-nginx
     ```
 
 1. Get a TLS certificate. If you running a public-facing server, the easiest way to obtain a certificate is to use a NGINX reverse proxy and get a Let's Encrypt certificate. Since we're using Ubuntu here **I SUGGEST YOU DO NOT USE SNAPD** and just ```sudo apt install certbot``` and then start on [Step 7 of these instructions by the EFF](https://certbot.eff.org/instructions) and most users would run the following command and follow the prompts:
-
-    ```
-    $ sudo certbot --nginx
+    ```shell script
+    sudo certbot --nginx
     ```
 
 1. Open up your web browser and see that the https template site is working before moving forward. It will appear with the lock icon in your web browser and you can click on it and see that it is valid certificate in your web browser.
@@ -99,22 +92,19 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
     You might also need these [20.04 specific instructions to setup your tls certificate with Nginx](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
 
 1. Restart nginx to enable the new configuration.
-
-    ```
-    $ sudo systemctl restart nginx.service
+    ```shell script
+    sudo systemctl restart nginx.service
     ```
 
 1. Open lightwalletd port in the firewall.
-
-    ```
-    $ sudo ufw allow 9067
-    $ sudo ufw status
+    ```shell script
+    sudo ufw allow 9067
+    sudo ufw status
     ```
 
 1. Run the lightwalletd frontend with the following and your server's hostname:
-
-    ```
-    $ sudo go run cmd/server/main.go -bind-addr your_host.net:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
+    ```shell script
+    sudo go run cmd/server/main.go -bind-addr your_host.net:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
     ```
 
     Note: Above we use the "-no-tls" option as we are using NGINX as a reverse proxy and letting it handle the TLS authentication for us.
@@ -140,20 +130,18 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 ###### Option 2: Point the command line `silentdragonlite-cli` to this server
 
 1. Ubuntu only has version 1.43.0 or Rustc, so we want to install a newer version. I used the defaults in the script.
-
-    ```
-    $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    $ rustc --version
+    ```shell script
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    rustc --version
     rustc 1.47.0 (18bf6b4f0 2020-10-07)
     ```
 
 1. Now to test if it's working with a client by connecting to your server! Substitute your server below:
-    
-    ```
-    $ git clone https://git.hush.is/hush/silentdragonlite-cli
-    $ cd silentdragonlite-cli
-    $ cargo build --release
-    $ ./target/release/silentdragonlite-cli --server https://lite.hush.is
+    ```shell script
+    git clone https://git.hush.is/hush/silentdragonlite-cli
+    cd silentdragonlite-cli
+    cargo build --release
+    ./target/release/silentdragonlite-cli --server https://lite.hush.is
     ```
 
 1. Success!
