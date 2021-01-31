@@ -10,7 +10,7 @@ This documentation is how you setup Silent Dragon Lite to use a Hush blockchain 
 
 We need to install the hush daemon (hushd) and then completely download the Hush blockchain.
 
-1. Setup and get your hushd functional on [Linux](hushd-desktop-linux.md), [Windows](hushd-desktop-windows.md), or Mac.
+1. Setup and get your hushd functional on [Linux](../hushd-desktop-linux.md), [Windows](../hushd-desktop-windows.md), or Mac.
 
 1. Start it up and it will take some time to download the whole blockchain. You can check your download against the latest block height on the [Hush explorer](https://explorer.hush.is/).
 
@@ -21,10 +21,9 @@ Once that is done downloading, we setup [Hush lightwalletd](https://git.hush.is/
 1. Clone it ```git clone https://git.hush.is/hush/lightwalletd```
 
 1. Then run
-
-	```
-	$ cd lightwalletd
-	$ sudo go run cmd/server/main.go -bind-addr 127.0.0.1:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
+	```shell script
+	cd lightwalletd
+	sudo go run cmd/server/main.go -bind-addr 127.0.0.1:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
 	```
 
 ### Setup nginx as reverse proxy
@@ -69,10 +68,8 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 	```
 
 1. Restart nginx.
-
-	```
-    $ sudo systemctl restart nginx.service
-
+	```shell script
+    sudo systemctl restart nginx.service
 	```
 
 ### Download and install SDL
@@ -81,7 +78,6 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 
 - For Binary releases, [the download link is here](https://git.hush.is/hush/SilentDragonLite/releases)
 - For source code so you can compile your own, [the link is here](https://git.hush.is/hush/SilentDragonLite/src/branch/master/README.md)
-- For legacy AppImage releases, [the download link is here](https://github.com/MyHush/SilentDragonLite/releases)
 
 ### Configure SDL
 
@@ -90,8 +86,7 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 1. Locate your SDL config file. On Linux it's usually in ~/.config/Hush/SilentDragonLite.conf. I'm not sure where they reside on Windows or Mac.
 
 1. In the [connection] section, make sure the following is there & we only want one server= line in that section:
-
-	```
+	```shell script
 	server=http://127.0.0.1:9067
 	```
 
