@@ -104,7 +104,7 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 
 1. Run the lightwalletd frontend with the following and your server's hostname:
     ```shell script
-    sudo go run cmd/server/main.go -bind-addr your_host.net:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
+    sudo go run cmd/server/main.go -bind-addr your_host.net:9067 -conf-file /home/YOUR_USERNAME_Running_Hushd/.komodo/HUSH3/HUSH3.conf -no-tls
     ```
 
     Note: Above we use the "-no-tls" option as we are using NGINX as a reverse proxy and letting it handle the TLS authentication for us.
