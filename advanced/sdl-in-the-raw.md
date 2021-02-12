@@ -21,56 +21,10 @@ Once that is done downloading, we setup [Hush lightwalletd](https://git.hush.is/
 1. Clone it ```git clone https://git.hush.is/hush/lightwalletd```
 
 1. Then run
-	```shell script
-	cd lightwalletd
-	sudo go run cmd/server/main.go -bind-addr 127.0.0.1:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
-	```
-
-### Setup nginx as reverse proxy
-
-Here we use a very simple nginx.conf as this web server will not run anything else and will only be started when needed.
-
-1. Install nginx. Look up how to do that as it differs per operating system.
-
-1. Start up nginx and open your computer's web browser to http://127.0.0.1 to verify that the nginx test page is working. If not then determine nginx is running and then continue on when it is.
-
-1. Backup the nginx.conf to a nginx.conf.original before you change it.
-
-1. Then delete everything in the nginx.conf and replace with the following:
-
-	```
-	worker_processes  1;
-
-	events {
-    	worker_connections  1024;
-	}
-
-	http {
-		include       mime.types;
-		default_type  application/octet-stream;
-		sendfile        on;
-		keepalive_timeout  65;
-		
-		server {
-	    	listen       80 http2;
-	        server_name  localhost;
-	
-	    	location / {
-		   		grpc_pass grpc://localhost:9067;
-	    	}
-	
-	        error_page   500 502 503 504  /50x.html;
-		    location = /50x.html {
-	    	    root   /usr/share/nginx/html;
-	    	}
-		}
-	}
-	```
-
-1. Restart nginx.
-	```shell script
-    sudo systemctl restart nginx.service
-	```
+```shell script
+cd lightwalletd
+sudo go run cmd/server/main.go -bind-addr 127.0.0.1:9067 -conf-file ~/.komodo/HUSH3/HUSH3.conf -no-tls
+```
 
 ### Download and install SDL
 
@@ -86,9 +40,10 @@ Here we use a very simple nginx.conf as this web server will not run anything el
 1. Locate your SDL config file. On Linux it's usually in ~/.config/Hush/SilentDragonLite.conf. I'm not sure where they reside on Windows or Mac.
 
 1. In the [connection] section, make sure the following is there & we only want one server= line in that section:
-	```shell script
-	server=http://127.0.0.1:9067
-	```
+```shell script
+[connection]
+server=http://127.0.0.1:9067
+```
 
 ### Start SDL 
 
