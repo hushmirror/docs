@@ -30,7 +30,7 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 
 1. Setup hushd by [following these instructions](hushd-desktop-linux.md) and make sure to grant the hush user sudo access.
 
-1. Start a screen session and change to user hush with ```sudo -u hush -s```. If you are not familiar with GNU screen or need a refresher, then [check out this link](https://linuxize.com/post/how-to-use-linux-screen/).
+1. Start a screen session and change to user hush with ```sudo -u hush -s```. If you are not familiar with GNU screen or need a refresher, then [check out this short video](https://www.youtube.com/watch?v=HomIzLB-HBc) or [check out this article](https://linuxize.com/post/how-to-use-linux-screen/).
 
 1. Open hushd port in the firewall.
     ```shell script
