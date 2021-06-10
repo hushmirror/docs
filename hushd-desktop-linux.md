@@ -6,7 +6,9 @@ In this example, we are using Ubuntu 18.04 (64 bit). This will be different on M
 
 ### Optional: Setup hush user account
 
-This section is optional as most users will run hushd as your own user account. Creating a separate user account is great for added security and typically recommended for servers.
+Most users will run hushd as their own user account and will not need to do this. If this is you then skip to the next section.
+
+Creating a separate user account is great for added security and typically recommended for servers.
 
 1) Log in as user account with sudo access and add a user 'hush' under which the daemon (hushd) will run :
     ```shell script
@@ -26,7 +28,7 @@ This section is optional as most users will run hushd as your own user account. 
 
 ### Hush binary or compile yourself?
 
-The next step is up to you. I personally like to compile from source and recommend trying that first.
+The next step is up to you. I personally like to compile from source and I always recommend trying that first.
 
 #### binary OR...
 
@@ -64,20 +66,17 @@ cd hush3
     ```shell script
     mkdir -p ~/.komodo/HUSH3
     ```
-1) Open the configuration file in your favorite text editor (nano, vim, etc). I would change the values below with CHANGETHIS appended and you can change the rpcport if you'd like:
+1) Open the HUSH3.conf configuration file in your favorite text editor (nano, vim, etc). I would change the values below with CHANGETHIS appended and you can change the rpcport if you'd like:
 
     ```
     rpcuser=user-CHANGETHIS
     rpcpassword=pass-CHANGETHIS
     rpcport=18031
     server=1
-    daemon=1
     txindex=1
     rpcworkqueue=256
     rpcallowip=127.0.0.1
     rpcbind=127.0.0.1
-
-    addnode=199.247.28.148
     ```
 
 ### Now we can start hushd daemon 
