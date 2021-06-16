@@ -42,7 +42,7 @@ If you are interested in testing it, then [please refer to our guide here](https
 
 #### Miners
 
-<img height=50% width=50% src="images/doge-miners.gif">
+![lol doge miners](images/doge-miners.gif)
 
 If you want to mine Hush, then the following documents are for you:
 
@@ -50,7 +50,7 @@ If you want to mine Hush, then the following documents are for you:
 
 #### Servers?
 
-<img height=50% width=50% src="images/servers.gif">
+![computer on fire](images/servers.gif)
 
 If you know what you're doing, and want to setup a server to help the Hush community, then the following documents are for you:
 
@@ -60,9 +60,9 @@ If you know what you're doing, and want to setup a server to help the Hush commu
 
 #### Advanced
 
-<img height=50% width=50% src="images/hush-kung-fu.gif">
+![men doing kung-fu](images/hush-kung-fu.gif)
 
-If you need some Hush kung-fu, then you know what to do!!! This is not for regular users :)
+If you need some Hush kung-fu, then you know what to do!!! **This is not for regular users :)**
 
 - [SDL in the RAW](advanced/sdl-in-the-raw.md): this howto is to setup an SDL server locally if your system is unable to access any online
 
