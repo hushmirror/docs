@@ -23,7 +23,7 @@ Most people visiting this page will be seeking how to setup their wallets. We al
 
 ### Wallets
 
-<img height=50% width=50% src="images/wallet.gif">
+![funny money](images/wallet.gif)
 
 If you are looking to setup a Hush wallet, then you have the following two choices:
 
@@ -31,12 +31,14 @@ If you are looking to setup a Hush wallet, then you have the following two choic
 - [Setup Hush lite wallet featuring HushChat](sdl.md)
 
 As for mobile wallets:
-- [Hush Android app](sda.md) is a companion app which pairs with either of the above two options. A mobile lite wallet is in development.
+- [Hush Android app](sda.md) is a companion app which pairs with either of the above two options. A mobile lite wallet is in development. [We recommend you install this using our custom F-Droid repository here](https://git.hush.is/jahway603/sda-fdroid).
 - Hush does not have an iOS app yet, care to make one?
 
 ### HushChat 
 
-Currently [HushChat](https://git.hush.is/hush/hushchat) is only available in the Hush lite wallet and it is in beta mode. If you are interested in testing it, then [please refer to our guide](https://git.hush.is/hush/hushchat/src/branch/master/guide.md).
+Currently [HushChat](https://git.hush.is/hush/hushchat) is only available in the Hush lite wallet and it is in beta mode.
+
+If you are interested in testing it, then [please refer to our guide here](https://git.hush.is/hush/hushchat/src/branch/master/guide.md).
 
 #### Miners
 

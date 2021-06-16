@@ -6,9 +6,9 @@ This documentation is how you setup Silent Dragon Lite (SDL), which is the Hush 
 
 **Make sure you make a paper backup of your seed phrases!**
 
-- For Binary releases, [the download link is here](https://git.hush.is/hush/SilentDragonLite/releases)
+- For our **NEW tutorial** written by JC on how to use a Virtual Machine running on Windows or Mac to use SDL and HushChat, [click here](https://git.hush.is/jahway603/hush-docs/src/branch/master/litevm/WindowsMac-Linux_Virtual_Machine-with-SDL-howto.md)
 - For source code so you can compile your own, [the link is here](https://git.hush.is/hush/SilentDragonLite/src/branch/master/README.md)
-- For legacy AppImage releases, [the download link is here](https://github.com/MyHush/SilentDragonLite/releases)
+- For Binary releases (which are not upkept as regularly), [the download link is here](https://git.hush.is/hush/SilentDragonLite/releases)
 
 ## After you install
 
