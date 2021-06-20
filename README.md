@@ -46,7 +46,8 @@ If you are interested in testing it, then [please refer to our guide here](https
 
 If you want to mine Hush, then the following documents are for you:
 
-- [Setup your Hush Innosilicon Miner](mining/mine-innosilicon.md)
+- [Setup your Hush Innosilicon Miner for pool mining](mining/mine-innosilicon.md)
+- Setup your Hush Innosilicon Miner for SOLO mining (**coming soon**)
 
 #### Servers?
 
