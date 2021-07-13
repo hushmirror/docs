@@ -34,6 +34,7 @@ If you have received payments of 100 HUSH, 50 HUSH and then 1000 payments of 1 H
 * First send a transaction of 99.9999 HUSH. There will be no change with a 0.0001 HUSH fee.
 * Then send a transaction of 49.9999 HUSH.
 * Then you can send payments of 0.9999 HUSH. Do it repeatedly and occasionally try to send the full amount (minus transaction fee). Once the number of unspent payments is reduced enough, they will all fit in one transaction.
+* For small amounts, you can try a fee=0 transaction.
 
 You must spend payments in order from largest to smallest, exactly, with no change. 
 
