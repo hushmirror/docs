@@ -41,5 +41,5 @@ This documentation is how to setup an Innosilicon A9 Miner and start mining Hush
 
 ## Mining support
 
-The Hush Team does not operate or support any mining pools. If you need support of your mining pool, then please seek your mining pool support.
+The Hush Team does not operate or support any mining pools at this time. If you need support of your mining pool, then please seek your mining pool support.
 
