@@ -72,7 +72,7 @@ First we need to setup the Hush configuration on our computer.
 1. Setup your "pool" as follows with this example using 192.168.33.101 as the desktop computer's IP address.
 
 	- Under Pool 1
-		- Change URL to "http://stratum+192.168.33.101:19031"
+		- Change URL to "stratum+tcp://192.168.33.101:19031"
 		- Change Worker to the newly-generated-t-address-you-own from your Hush wallet. It's also a good idea to create and use new addresses every so often for better privacy.
 		- Change Password to whatever you want, some just use "X"
 
@@ -81,8 +81,6 @@ First we need to setup the Hush configuration on our computer.
 1. Then click on Update Pools at the bottom of the Mining Pools Settings webpage.
 
 1. Success as you hear your miner spin up! Check the Miner Status in the web UI to verify that it is actually mining.
-
-<img height=100% width=100% src="../images/knomp-hush-miner.png">
 
 1. Also check the command line on the desktop computer to see any messages that it is working.
 
@@ -93,11 +91,3 @@ First we need to setup the Hush configuration on our computer.
 ## Mining support
 
 Join us in our Hush mining channel on Telegram, which can [be found here](https://t.me/minersgonnamine). Most miners are not rocking "Hush Solo" style, so make sure you mention that too.
-
-##### Credits
-
-Hush puppies like giving credit when it's due,
-
-1. [This resource](https://github.com/zone117x/node-open-mining-portal) was a great help with writing this as it had in-depth explanation of each option in all of the config files we configured. If you need any other info on certain options, then take a look thru their write-up.
-
-1. [This repository](https://github.com/z-classic/z-nomp/tree/master/pool_configs) is an old Z-NOMP with pool configurations, so these were helpful to see other options, like those special _comments.
