@@ -59,8 +59,6 @@ First we need to setup the Hush configuration on our computer.
 	hush-cli getnewaddress
 	```
 
-	"address": "FIRST-newly-generated-t-address-you-own",
-
 ### ASIC Miner setup
 
 1. Open the web UI and login in via your web browser.
