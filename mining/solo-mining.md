@@ -38,114 +38,36 @@ First we need to setup the Hush configuration on our computer.
 	Change the ```rpcuser``` and ```rpcpassword``` above to something unique as it will be used later.
 	Note: If you had more than 1 ASIC, then each one would get it's own rpcallowip line item.
 
-1. Then start ```hushd``` at the command line. It needs to be on your desktop computer with the Hush blockchain completely downloaded before you continue. You can check its status with the following command ```hush-cli getinfo | grep synced``` and you want the value to be true before continuing.
+1. If you have a firewall enabled on your computer, we must give access to the ASIC device on the proper port of stratum server.
 
-### Setup a NOMP
-
-I didn't know what NOMP meant, so I looked it up and it stands for Node Open Mining Protocol. This software will let our ASIC miner connect to the hushd running on our computer, so here we go...
-
-1. We'll use [KNOMP](https://github.com/webworker01/knomp), which is a NOMP based stratum for Komodo based Equihash coins like Hush.
-
-1. We git clone it and change to the ```knomp``` directory.
 	```
-	mkdir ~/hushsolo
-	cd ~/hushsolo
-	git clone https://github.com/webworker01/knomp
-	cd knomp
+	sudo ufw allow from 192.168.33.66 to any port 19031
+	sudo ufw reload
+	sudo ufw status
 	```
+		
+	Note: If you have some type of unique network setup, then you may need to disable or change something on your router if your ASIC isn't connecting to live pool or your local stratum pool.
 
-1. Then copy an example config file to be used by us.
-	```
-	cp config_example.json config.json
-	```
+1. Next we start the hush daemon (hushd) at the command line with special options to enable a stratum server.
 
-1. Then edit config.json and save it.
 	```
-	only things changed from default were 
-	"forks": "auto"
-	"stratumHost": "stratum.hush.puppy"
+	./src/hushd -stratum -debug=stratum -stratumallowip=192.168.0.0/16 &> hush-stratum.log
+	```	
+
+	Substitute your hushd path and your local network appropriately in the above command.
+
+1. Check that the stratum is started by seeing that it is listening on the correct port (default 19031).
+
+	```
+	ss -lnt | grep 19031
 	```
 
-1. Next we create a "coin" config for Hush. Change to the ```coins``` directory, create "hush.json", and configure as follows:
-	```
-	{
-		"name": "hush",
-		"symbol": "hush",
-		"algorithm": "equihash",
-		"peerMagic": "f9eee48d",
-		"txfee": 0.0001,
-		"privateChain": true,
-		"burnFees": true,
-		"sapling": true
-	}
-	```
+1. Your desktop computer needs to download & sync the Hush blockchain completely before you continue. You can check its status with the following command after waiting a couple of minutes after hushd has been started up ```hush-cli getinfo | grep synced```. When that value is true, then continue.
 
-1. Then copy the poolconfig template into the ```knomp\pool_configs``` directory 
-	```
-	cd ~\hushsolo\knomp
-	cp poolconfigs.template pool_configs/hushsolo.json
-	cd pool_configs
-	```
-
-1. We need some t-addresses (yes, transparent garbage) for the mining software, so generate some new t-addresses with this command:
+1. We need to get a t-addresses (yes, transparent garbage) to be able to mine solo. We generate a new t-address with this command:
 	```
 	hush-cli getnewaddress
 	```
-
-1. Now edit hushsolo.json and configure it as follows. 
-
-	** IMPORTANT: the zAddress and tAddress below need to come from the same wallet**
-
-	```
-	{
-	"enabled": true,
-	"coin": "hush.json",
-	"address": "FIRST-newly-generated-t-address-you-own",
-	"zAddress": "the-z-address-you-want-to-mine-to",
-	"tAddress": "SAME-AS-address-above-as-not-sure-if-need-to-be-different-or-not",
-	"walletInterval": 1,
-	"rewardRecipients": {},
-  	"tlsOptions": { "enabled": false },
-	"paymentProcessing": { "enabled": false, "daemon": false },
-	"trackShares": { "disable": true },
-	"ports": {
-    	"3333": {
-        	"tls":false,
-        	"diff": 0.05,
-        	"varDiff": {
-            	"minDiff": 0.04,
-            	"maxDiff": 16,
-            	"targetTime": 15,
-            	"retargetTime": 60,
-            	"variancePercent": 30
-        	}
-    	}
-	},
-	"daemons": [{
-    	"host": "127.0.0.1",
-    	"port": 18031,
-    	"user": "rpcuser value from HUSH3.conf",
-    	"password": "rpcpassword value from HUSH3.conf"
-	}],
-	
-	"p2p": {
-        	"enabled": true,
-        	"host": "127.0.0.1",
-        	"port": 19333,
-        	"disableTransactions": true
-	},
-	"mposMode": { "enabled": false }
-	}
-	```
-
-1. Now change back to the knomp directory.
-	```
-	cd ~\hushsolo\knomp
-	```
-
-1. We run ```docker-compose up``` at the command line in the KNOMP directory once we configure as above.
-
-1. Double check by opening 127.0.0.1:8080 in your web browser to check.
 
 ### ASIC Miner setup
 
@@ -160,8 +82,8 @@ I didn't know what NOMP meant, so I looked it up and it stands for Node Open Min
 1. Setup your "pool" as follows with this example using 192.168.33.101 as the desktop computer's IP address.
 
 	- Under Pool 1
-		- Change URL to "http://stratum+192.168.33.101:3333"
-		- Change Worker to a z-address from your Hush wallet. It's a good idea to create and use new addresses every so often for better privacy.
+		- Change URL to "stratum+tcp://192.168.33.101:19031"
+		- Change Worker to the newly-generated-t-address-you-own from your Hush wallet. It's also a good idea to create and use new addresses every so often for better privacy.
 		- Change Password to whatever you want, some just use "X"
 
 	- Under Pool 2 & Pool 3 we leave as-is
@@ -170,24 +92,12 @@ I didn't know what NOMP meant, so I looked it up and it stands for Node Open Min
 
 1. Success as you hear your miner spin up! Check the Miner Status in the web UI to verify that it is actually mining.
 
-<img height=100% width=100% src="../images/knomp-hush-miner.png">
-
-1. Also check the status of 192.168.33.101:8080 in your web browser and click around to see that it is working!
+1. Also check the command line on the desktop computer to see any messages that it is working.
 
 ## To-Do Items to Clarify
 
-* Not sure if the address & tAddress are the same t-address in the pool_config file.
-* Not sure if the ASIC miner "leaving" and "re-joining" the pool constantly is normal or a setting that needs to be changed.
 * Have to test this further...
 
 ## Mining support
 
 Join us in our Hush mining channel on Telegram, which can [be found here](https://t.me/minersgonnamine). Most miners are not rocking "Hush Solo" style, so make sure you mention that too.
-
-##### Credits
-
-Hush puppies like giving credit when it's due,
-
-1. [This resource](https://github.com/zone117x/node-open-mining-portal) was a great help with writing this as it had in-depth explanation of each option in all of the config files we configured. If you need any other info on certain options, then take a look thru their write-up.
-
-1. [This repository](https://github.com/z-classic/z-nomp/tree/master/pool_configs) is an old Z-NOMP with pool configurations, so these were helpful to see other options, like those special _comments.
