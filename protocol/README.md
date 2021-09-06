@@ -48,7 +48,7 @@ to z2z, Hush has something called Sietch which obscures even more metadata about
 the ordering of the outputs and change and the number of outputs.
 
 By default Zcash z2z transactions will have two outputs, where Hush will have eight on average. Individual transactions
-will have between seven and nice shielded outputs which is non-deterministically chosen at transaction creation time.
+will have between seven and nine shielded outputs which is non-deterministically chosen at transaction creation time.
 
 # Hush Peer-to-Peer (P2P) layer
 
