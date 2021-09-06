@@ -43,6 +43,13 @@ since that data must be public.
 When a new block is mined on HUSH, 90% of the funds go to the taddr of the miner and 10% goes to the address of
 the Founder Reward (or Developer Tax, however you like to think of it) which is `RHushEyeDm7XwtaTWtyCbjGQumYyV8vMjn` .
 
+Zcash has never and seemingly never will mandate zaddr usage, so z2z transactions are rare on their network. In addition
+to z2z, Hush has something called Sietch which obscures even more metadata about shielded transactions, specifically,
+the ordering of the outputs and change and the number of outputs.
+
+By default Zcash z2z transactions will have two outputs, where Hush will have eight on average. Individual transactions
+will have between seven and nice shielded outputs which is non-deterministically chosen at transaction creation time.
+
 # Hush Peer-to-Peer (P2P) layer
 
 Hush has mandatory TLS 1.3 encryption of all network connections, the first cryptocoin to accomplish this. What it means
@@ -67,3 +74,55 @@ the privacy failures just get worse.
 
 The way the Hush p2p layer is designed, even if the Sybil Attacker is running 99% of the nodes on the network, they still would only have, less than a 50% chance of being able to tell which node created a transaction. This also means that under normal circumstances, it is impossible for a network eavesdropper or malicious node(s) on the network to identify which node created which transaction. While Bitcoin and Zcash Protocol are optimized to reduce bandwidth of the network, which makes it vulnerable to Sybil Attacks, Hush chooses to use more bandwidth and gain privacy.
 
+## P2P Details
+
+The number of maximum outbound peers in 8 in Bitcoin, 16 in Zcash and 64 with Hush. This necessarily means more network traffic and higher bandwidth usage
+in Hush versus Zcash or Bitcoin, which is increased even more by our use of TLS 1.3 instead of plaintext. Privacy is worth it to us, so we are happy to trade bandwidth
+for privacy.
+
+In Bitcoin and Zcash, when a node makes a brand new transaction, it relays it to all known outbound peers that it knows about. This is very good for resiliency,
+since it spreads the new transaction to many nodes at once. It is very bad for privacy, because of something called the "First Spy Estimator". Nodes can listen
+to P2P traffic, which is never written to the public "ledger" data viewable on an explorer, and estimate which node relayed a transaction first. This is very
+likely the node that created it, or a service that helped create the transaction, such as a lite wallet server. The more nodes you are willing to have listen,
+the more likely you are to guess correctly. If you have two nodes that say two different IP addresses made a transaction, the one with earlier timestamp is the
+better guess.
+
+It is trivial on Bitcoin and Zcash networks to run nodes to perform this "First Spy Estimator" and the Hush community assumes this already happens and is
+embedded into blockchain analysis softare already. This means that blockchain analysis companies can likely already tell the IP address of Bitcoin and Zcash
+transactions with high likelihood.
+
+## Defeating "First Timestamp Estimator" (FTE)
+
+Deanonymization in the bitcoin P2P network - https://papers.nips.cc/paper/2017/file/6c3cf77d52820cd0fe646d38bc2145ca-Paper.pdf
+
+Dandelion is one way to try to defeat it, but the internals implementation is complex and can potentially add new attacks, which is why it was never merged
+into Bitcoin. Monero does have Dandelion, but attacks such as BADCACA show it is still vulnerable to Sybil Attacks. Dandelion++ is an improvement to Dandelion
+that fixes many issues with the original Dandelion algorithm, but so far it seems no cryptocoin fully implements it, likely because of the complexity of how
+it changes network and mempool internals.
+
+Hush was motivated by the question "What is the simplest way to defeat the first timestamp estimator?". We also wanted to optimize for very bad conditions,
+of Sybil Attacks that run 50-99% of nodes, not small Sybil Attacks when the attacker runs less than half the nodes in the network. Implementing Dandelion
+requires changing how the mempool works and we also wanted to avoid that, since it's very hard to know if new vulnerabilities are being introduced.
+
+Hush's method to defeat the FTE is choosing a *random subset of peers* at transaction relay time, and only relaying the transaction to those peers.
+This means that it takes longer for Hush transactions to fully propagate across the network. Hush is happy to trade some network latency for privacy and since this
+latency is on the order of seconds, it does not slow down anything noticeable to end users. Currently Hush relays transactions to half of it's outbound nodes, and rounds
+down in case of odd numbers. So for instance, if a Hush node has 5 outbound connections, it will relay to a random subset of 2 of them, which is 40%. Rounding down
+helps make things harder on the attacker for nodes with small numbers of outbound connections, such as those who have only recently joined the network.
+
+Imagine a scenario where the network is 50% Sybil nodes, which are using the FTE to correlate which nodes created which transactions, i.e. creating 
+a mapping between IP address and transaction id. With the Hush transaction relay algorithm, it's possible for a Sybil node to be directly connected to the node
+making a transaction, yet that node might not relay the transaction to the Sybil node, since that outbound node is not one of the randomly 50% of peers that is chosen
+when the transaction is made.
+
+If we assume that 50% of our nodes are Sybil nodes and we only relay our transaction to 50% of our connections, then on average, the FTE will only be correct
+25% of the time. As we assume the Sybil Attacker has a large percentage of network nodes, the FTE will increase in accuracy but never be more than 50% accurate, which is
+not very good at all.
+
+Nodes with small numbers of connections also do well against the attacker. If a node has only 3 outbound connections and makes a transaction, it will only relay it to 1
+node, which is 33%. If we assume a Sybil Attacker with 50% of network nodes, the FTE will only be accurate about 17% of the time in trying to decide which node made the
+transaction. In the same situation, a Hush node with 15 connections will result in an FTE with ~23% accuracy.
+
+## Tor P2P Support
+
+Tor v2 was deprecated by the Tor network and they have changed to v3, and Hush is currently in the process of merging Tor v3 support from BTC Core.
