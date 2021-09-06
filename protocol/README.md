@@ -60,7 +60,8 @@ of data to network eavesdroppers. Since everything is public already on Bitcoin,
 TLS. But for privacy coins, encrypted connections is a must to lessen metadata leakage.
 
 Mandatory TLS means that people recording the internet don't get to see all your data,
-and that is very good.
+and that is very good. To this date, all privacy coins known to the author use plaintext or optionally use TLS, no coin
+except Hush requires privacy for all network connections!
 
 What if the attacker is willing to run one or more nodes?  In both Bitcoin/Zcash protocol, it is simple to have one or many nodes on the network
 that listen for which IP address is first relaying a transaction, which is a very good indication of that node having created that transaction.
