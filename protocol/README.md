@@ -91,7 +91,7 @@ likely the node that created it, or a service that helped create the transaction
 the more likely you are to guess correctly. If you have two nodes that say two different IP addresses made a transaction, the one with earlier timestamp is the
 better guess.
 
-It is trivial on Bitcoin and Zcash networks to run nodes to perform this "First Spy Estimator" and the Hush community assumes this already happens and is
+It is trivial on Bitcoin and Zcash networks to run nodes to perform this "First Timestamp Estimator" and the Hush community assumes this already happens and is
 embedded into blockchain analysis softare already. This means that blockchain analysis companies can likely already tell the IP address of Bitcoin and Zcash
 transactions with high likelihood.
 
