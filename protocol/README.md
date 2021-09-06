@@ -72,7 +72,7 @@ where a large percentage of Tor Exit Nodes will become malicious and reduce the 
 when a Sybil Attack is able to run a small percentage of the network, such as 10%. If a Sybil Attack would be able to run 50% or even 99% of the network,
 the privacy failures just get worse.
 
-The way the Hush p2p layer is designed, even if the Sybil Attacker is running 99% of the nodes on the network, they still would only have, less than a 50% chance of being able to tell which node created a transaction. This also means that under normal circumstances, it is impossible for a network eavesdropper or malicious node(s) on the network to identify which node created which transaction. While Bitcoin and Zcash Protocol are optimized to reduce bandwidth of the network, which makes it vulnerable to Sybil Attacks, Hush chooses to use more bandwidth and gain privacy.
+The way the Hush p2p layer is designed, even if the Sybil Attacker is running 99% of the nodes on the network, they still would only have, less than a 50% chance of being able to tell which node created a transaction. This also means that under normal circumstances, it is impossible for a network eavesdropper or malicious node(s) on the network to identify which node created which transaction. While Bitcoin and Zcash Protocol are optimized to reduce bandwidth of the network, which makes it vulnerable to Sybil Attacks, Hush chooses to use more bandwidth and slightly more network latency to gain privacy.
 
 ## P2P Details
 
@@ -116,7 +116,7 @@ making a transaction, yet that node might not relay the transaction to the Sybil
 when the transaction is made.
 
 If we assume that 50% of our nodes are Sybil nodes and we only relay our transaction to 50% of our connections, then on average, the FTE will only be correct
-25% of the time. As we assume the Sybil Attacker has a large percentage of network nodes, the FTE will increase in accuracy but never be more than 50% accurate, which is
+25% of the time. As we assume the Sybil Attacker has a larger percentage of network nodes, the FTE will increase in accuracy but never be more than 50% accurate, which is
 not very good at all.
 
 Nodes with small numbers of connections also do well against the attacker. If a node has only 3 outbound connections and makes a transaction, it will only relay it to 1
