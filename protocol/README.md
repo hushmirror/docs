@@ -81,7 +81,11 @@ in Hush versus Zcash or Bitcoin, which is increased even more by our use of TLS 
 for privacy.
 
 In Bitcoin and Zcash, when a node makes a brand new transaction, it relays it to all known outbound peers that it knows about. This is very good for resiliency,
-since it spreads the new transaction to many nodes at once. It is very bad for privacy, because of something called the "First Spy Estimator". Nodes can listen
+since it spreads the new transaction to many nodes at once. It is very bad for privacy, because of something called the "First Timestamp Estimator" from the paper
+"Deanonymization in the bitcoin P2P network" https://papers.nips.cc/paper/2017/file/6c3cf77d52820cd0fe646d38bc2145ca-Paper.pdf .
+
+
+Nodes can listen
 to P2P traffic, which is never written to the public "ledger" data viewable on an explorer, and estimate which node relayed a transaction first. This is very
 likely the node that created it, or a service that helped create the transaction, such as a lite wallet server. The more nodes you are willing to have listen,
 the more likely you are to guess correctly. If you have two nodes that say two different IP addresses made a transaction, the one with earlier timestamp is the
@@ -93,7 +97,6 @@ transactions with high likelihood.
 
 ## Defeating "First Timestamp Estimator" (FTE)
 
-Deanonymization in the bitcoin P2P network - https://papers.nips.cc/paper/2017/file/6c3cf77d52820cd0fe646d38bc2145ca-Paper.pdf
 
 Dandelion is one way to try to defeat it, but the internals implementation is complex and can potentially add new attacks, which is why it was never merged
 into Bitcoin. Monero does have Dandelion, but attacks such as BADCACA show it is still vulnerable to Sybil Attacks. Dandelion++ is an improvement to Dandelion
