@@ -79,5 +79,5 @@ rpcworkqueue=8192
 
 This makes it take much longer and less likely for all RPC "slots" to be deadlocked at the same time, which prevents issuing RPC commands to hushd.
 Larger numbers can be used, and in general, the more zaddrs and transactions a wallet has, the more likely it will run into a deadlock and need a higher
-`rpcworkqueue` value. This method uses a few more kilobytes of RAM to have more slots, which is a good trade for avoid downtime and node maintenance.
+`rpcworkqueue` value. This method uses a few more kilobytes of RAM to have more slots, which is a good trade to avoid downtime and node maintenance.
 
