@@ -46,3 +46,38 @@ The fix is simple, the sysadmin can just stop and restart hushd with a `-rescanh
 or earlier. If the sysadmin does not know an exact block height to use for `-rescanheight` than a conservative estimate in the past
 can be used, such as a block height from one month or even one year ago. This will still help avoid much of blockchain history during
 the rescan and will still result in drastically less downtime while the node is rescanning.
+
+## My RPC interface stops responding to requests!
+
+It is sometimes possible for the RPC interface to stop answering requests, due to a bug inherited from BTC/ZEC and made worse
+by the privacy additions inside of HUSH. There are two different mitigations Hush has added to hushd to deal with this, while
+the underlying problem is researched more.
+
+### PLZ STOP
+
+If the RPC interface stops answering requests, it becomes impossible to run `hush-cli stop` and sysadmins are forced to use `kill`
+to stop the node, which can lead to problems described above which hushd crashing. So Hush developers made a purely disk-based method
+to ask hushd to stop. A sysadmin simply creates a file called `plz_stop` in the same directory as `wallet.dat`. Every 120 seconds, `hushd`
+looks for this file and will stop the node if it is found. The file can be of zero size, it's contents do not matter. So for instance:
+
+```
+cd ~/.hush/HUSH3 # or cd ~/.komodo/HUSH3 for legacy locations
+touch plz_stop
+# hushd will stop within 2 minutes
+```
+
+With the above "trick", you can avoid using `kill` and hushd will do it's ztx bookkeeping just before it shuts down, which avoids long rescans.
+
+
+### RPC Work Queue
+
+One way to avoid the "RPC deadlock bug" or make it much rarer is to increase the size of the "RPC work queue" in HUSH3.conf like this:
+
+```
+rpcworkqueue=8192
+```
+
+This makes it take much longer and less likely for all RPC "slots" to be deadlocked at the same time, which prevents issuing RPC commands to hushd.
+Larger numbers can be used, and in general, the more zaddrs and transactions a wallet has, the more likely it will run into a deadlock and need a higher
+`rpcworkqueue` value. This method uses a few more kilobytes of RAM to have more slots, which is a good trade for avoid downtime and node maintenance.
+
