@@ -28,7 +28,7 @@ For example, lets say from the debug.log that a system admin knows that the last
 was 12345. This can be found by looking for the very last UpdateTip line in the debug.log. That means witness data is correct
 up to that height, and that is what we can use as a starting point. So the sysadmin would do
 
-    hushd -rescan -rescanheight=12345 -keepnotewitnesscache
+    hushd -rescan=1 -rescanheight=12345 -keepnotewitnesscache=1
 
 and then hushd will only rescan the history from block 12345 until the current block, which saves huge amount of time.
 
