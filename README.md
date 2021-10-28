@@ -65,6 +65,7 @@ If you know what you're doing, and want to setup a server to help the Hush commu
 
 If you need some Hush kung-fu, then you know what to do!!! **This is not for regular users :)**
 
+- RPC documentation: https://faq.hush.is/rpc/
 - [SDL in the RAW](advanced/sdl-in-the-raw.md): this howto is to setup an SDL server locally if your system is unable to access any online
 
 ## Support Links
