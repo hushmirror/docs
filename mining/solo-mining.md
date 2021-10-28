@@ -38,10 +38,20 @@ First we need to setup the Hush configuration on our computer.
 	Change the ```rpcuser``` and ```rpcpassword``` above to something unique as it will be used later.
 	Note: If you had more than 1 ASIC, then each one would get it's own rpcallowip line item.
 
+1. If you have a firewall enabled on your computer, we must give access to the ASIC device on the proper port of stratum server.
+
+	```
+	sudo ufw allow from 192.168.33.66 to any port 19031
+	sudo ufw reload
+	sudo ufw status
+	```
+		
+	Note: If you have some type of unique network setup, then you may need to disable or change something on your router if your ASIC isn't connecting to live pool or your local stratum pool.
+
 1. Next we start the hush daemon (hushd) at the command line with special options to enable a stratum server.
 
 	```
-	./src/hushd -stratum -debug=stratum -stratumallowip=192.168.0.0/16
+	./src/hushd -stratum -debug=stratum -stratumallowip=192.168.0.0/16 &> hush-stratum.log
 	```	
 
 	Substitute your hushd path and your local network appropriately in the above command.
