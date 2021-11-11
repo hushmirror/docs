@@ -73,5 +73,7 @@ Using Qt version 5.15.2 in /usr/local/Qt-5.15.2/lib
 
 `./build.sh` 
 
+![happy little apps](images/bob-ross-happy.gif)
+
 ## Support
 [Hush Tech Support Telegram channel](https://t.me/hush8support) 
