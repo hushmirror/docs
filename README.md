@@ -49,6 +49,12 @@ If you want to mine Hush, then the following documents are for you:
 - [Setup your Hush Innosilicon Miner for pool mining](mining/mine-innosilicon.md)
 - [Setup your Hush Innosilicon Miner for SOLO mining](mining/solo-mining.md)
 
+
+#### Translations
+
+See https://git.hush.is/onryo/translate-sd-sdl for detailed documentation on making Hush translations and https://git.hush.is/hush/translations for an overview of how we deal with translations in the Hush community.
+
+
 #### Servers?
 
 ![computer on fire](images/servers.gif)
