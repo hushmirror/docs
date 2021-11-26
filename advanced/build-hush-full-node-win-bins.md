@@ -28,7 +28,7 @@ git clone https://git.hush.is/hush/hush3.git && cd hush3
 
 ### Prepare directory for zipping
 ```
-mkdir mkdir hush-vX.X.X-win
+mkdir hush-vX.X.X-win
 ```
 
 ### Compile fresh Hush Windows binaries
