@@ -42,7 +42,7 @@ Install your preferred distro. In this example I am using a VPS running Ubuntu 2
 
 1. Then check if the Hush blockchain is downloading by noticing if the blockchain directory is increasing.
     ```shell script
-    du -h ~/.komodo/HUSH3/blocks/
+    du -h ~/.hush/HUSH3/blocks/
     ```
 
 1. The blockchain download will take some time, so feel free to take a break and wait or open another terminal (or GNU screen) and continue to install Hush lightwalletd.
