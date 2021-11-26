@@ -143,7 +143,7 @@ cp -v hush-vX.X.X-win.zip
 *You will need a Windows 10 OS to test these binaries*
 **Follow the README.txt**
 
-### Upload ZIP to Hush Gitea via [Releases](https://git.hush.is/hush/hush3/releases page)
+### Upload ZIP to Hush Gitea via [Releases](https://git.hush.is/hush/hush3/releases) page
 ```
 cp /tmp/hush-vX.X.X-win.zip /home/username/Downloads
 ```
@@ -152,12 +152,14 @@ cp /tmp/hush-vX.X.X-win.zip /home/username/Downloads
 b558c52c4bdbf3290f28b2a7beaa3cd1a93aa6b110ef2db59c2ad17faff60314  hush-3.9.0-win.zip
 ```
 
-### Exit docker container
+### Exit & destroy docker container
 ```
 exit
 ```
 
-### Congratulations :party 
+### Congratulations
+
+![I Am A Banana](../images/banana-go-bananas.gif)
 
 ## Support, Socials and Licensing
 
