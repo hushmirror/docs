@@ -136,7 +136,7 @@ I.E. b558c52c4bdbf3290f28b2a7beaa3cd1a93aa6b110ef2db59c2ad17faff60314  hush-3.9.
 
 ### Copy hush-vX.X.X-win.zip to actual machine directory /tmp/
 ```
-cp -v hush-vX.X.X-win.zip
+cp hush-vX.X.X-win.zip /tmp/hush-vX.X.X-win.zip
 ```
 
 ### Test fresh Hush Windows binaries
