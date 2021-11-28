@@ -2,19 +2,19 @@
 This documentation is for creating a SilentDragon MSI installer for Windows using msitools and wixl. Documentation for msitools is here: https://wiki.gnome.org/msitools Documentation for wixl can refer to WiX toolset as it tries to share the same syntax: https://wixtoolset.org/documentation/manual/v3/ 
 This was tested on Debian 11 (Bullseye)
 ## Install msitools and wixl
-`
+```
 sudo apt-get -y install msitools wixl
-`
+```
 ## Download latest SilentDragon Windows release and unzip
 Latest releases located here: https://git.hush.is/hush/SilentDragon/releases Example below is for SilentDragon 1.3.0
-`
+```
 wget https://git.hush.is/attachments/a95d4c43-b662-49bc-a3af-a6fbdd4b9724
 unzip a95d4c43-b662-49bc-a3af-a6fbdd4b9724
-`
+```
 This will unzip into a directory named SilentDragon-1.3.0-win
-`
+```
 cd SilentDragon-1.3.0-win
-`
+```
 ## Copy silentdragon.ico to SilentDragon directory
 The icon file `silentdragon.ico` is currently not included in release zip, but is required to create an MSI installer with a smaller size. Setting icon SourceFile in the .wxs file to silentdragon.exe will duplicate the .exe and make the installer over 100MB instead of ~80MB. How you get this .ico file is up to you. I extracted from .exe on Windows. Maybe it will be included in .zip release in the future to make this easier for anyone trying to create a MSI file for the first time. 
 
@@ -99,8 +99,8 @@ Below is a copy of the contents of the `SilentDragon-1.3.0.wxs` file Note that G
 </Wix>
 ```
 ## Build MSI file from WiX source file
-`
+```
 wixl -v SilentDragon-1.3.0.wxs
-`
+```
 
 This will create a `SilentDragon-1.3.0.msi` file in the same directory which can then be distributed. If it created without error and is larger than 0kb, congratulations!
