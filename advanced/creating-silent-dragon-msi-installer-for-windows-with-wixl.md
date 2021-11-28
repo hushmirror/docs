@@ -20,7 +20,7 @@ The icon file `silentdragon.ico` is currently not included in release zip, but i
 
 ## Create WiX source file (.wxs)
 This is an XML file. You should name it what you want the .msi file to be named IE: `SilentDragon-1.3.0.wxs`
-Below is a copy of the contents of the `SilentDragon-1.3.0.wxs file` Note that GUID's all need to be unique. This will create shortcuts to SilentDragon on desktop and in the start menu as well as have uninstall support from Add/Remove Programs. A tutorial that explains the basics of creating these files can be found here: https://www.firegiant.com/wix/tutorial/
+Below is a copy of the contents of the `SilentDragon-1.3.0.wxs` file Note that GUID's all need to be unique. This will create shortcuts to SilentDragon on desktop and in the start menu as well as have uninstall support from Add/Remove Programs. A tutorial that explains the basics of creating these files can be found here: https://www.firegiant.com/wix/tutorial/
 ```
 <?xml version='1.0' encoding='windows-1252'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
@@ -102,4 +102,5 @@ Below is a copy of the contents of the `SilentDragon-1.3.0.wxs file` Note that G
 `
 wixl -v SilentDragon-1.3.0.wxs
 `
+
 This will create a `SilentDragon-1.3.0.msi` file in the same directory which can then be distributed. If it created without error and is larger than 0kb, congratulations!
