@@ -29,24 +29,25 @@ of tools for that blockchain.
     1:03:55 - Custody and exit fraud risk of "mixers" are inferior to protocol level privacy. Privacy coins have less risk of theft, almost none
     1:04 -
 
+```
 We also have projects that are funded by Law Enforcement Organizations,
 to work on Monero and Zcash tools and support, so there is good interest
 in the research funding side, as well as the investigation side.
 
-``` - Dave Jevans, CEO of Ciphertrace 
+ - Dave Jevans, CEO of Ciphertrace 
+```
 
+```
 The other thing, we are in touch with some communities and I would say, for example, we are getting a lot of helpful attitude from the Zcash Community, they were able to explain to us how exactly coin anonymization feature worked. Of course, if you have a suspect that knows what he is doing, he is not making stupid mistakes, their community is, of course, not in a position to help.
 
 -- ChainAnalysis
-
+```
 
 * 1:04:20 - What should Law Enforcement Organizations do?
 * 1:05:00 - What Should Law Enforcement Do When They See A Privacy Coin?
   * Very few options, forensics tools don't help. Monero + Tor is a dead end.
   * Seizing phones is the easiest way to de-anonymize privacy coins!
-* 1:06:00 - Telling Law Enforcement to search for privacy coin wallets, not just Bitcoin wallets, on seized phones.
-            Wallets can be imported into surveillance software.
-
+* 1:06:00 - Telling Law Enforcement to search for privacy coin wallets, not just Bitcoin wallets, on seized phones. Wallets can be imported into surveillance software.
 
 
 Originally from https://gist.github.com/leto/c351124c937e1516e9ac37e86738b0b2 
