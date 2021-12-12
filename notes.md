@@ -2,18 +2,20 @@
 
 TLDR: ECC profits directly from their own users lack of privacy.
 
-    The company behind Zcash, Electric Coin Company, works directly with Law Enforcement and blockchain analysis companies, whose largest customers are Law Enforcement Organizations (LEOs).
-    This is the Military-Industrial-Surveillance complex, where ECC directly profits from their users lack of privacy
-    The Hush community finds this to be an egregious conflict-of-interest
-    What follows are important summaries and quotes from this video:
+The company behind Zcash, Electric Coin Company, works directly with Law Enforcement and blockchain analysis companies, whose largest customers are Law Enforcement Organizations (LEOs).
+
+This is the Military-Industrial-Surveillance complex, where ECC directly profits from their users lack of privacy
+
+The Hush community finds this to be an egregious conflict-of-interest
+What follows are important summaries and quotes from this video:
 
 https://www.bitchute.com/video/PWXU7D4VV0lB/
 
-    The video was removed from YouTube and then uncensored by the Monero community
+The video was removed from YouTube and then uncensored by the Monero community
 
-    The companies actually make fun of Zcash optional privacy, but say if people use the tech, they can't track it.
+The companies actually make fun of Zcash optional privacy, but say if people use the tech, they can't track it.
 
-    It shows that ECC profits directly from their own users lack of privacy.
+It shows that ECC profits directly from their own users lack of privacy.
 
     0:43:45
 
@@ -44,6 +46,7 @@ The other thing, we are in touch with some communities and I would say, for exam
   * Seizing phones is the easiest way to de-anonymize privacy coins!
 * 1:06:00 - Telling Law Enforcement to search for privacy coin wallets, not just Bitcoin wallets, on seized phones.
             Wallets can be imported into surveillance software.
+
 
 
 Originally from https://gist.github.com/leto/c351124c937e1516e9ac37e86738b0b2 
