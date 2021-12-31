@@ -98,14 +98,17 @@ transactions with high likelihood.
 
 ## Defeating "First Timestamp Estimator" (FTE)
 
+The idea of a FTE comes from "Anonymity Properties of the Bitcoin P2P Network" at https://arxiv.org/pdf/1703.08761.pdf by Giulia Fanti and Pramod Viswanath.
+We thank Guilia Fanti for their feedback on this section.
 
 Dandelion is one way to try to defeat it, but the internals implementation is complex and can potentially add new attacks, which is why it was never merged
 into Bitcoin. Monero does have Dandelion, but attacks such as BADCACA show it is still vulnerable to Sybil Attacks. Dandelion++ is an improvement to Dandelion
 that fixes many issues with the original Dandelion algorithm, but so far it seems no cryptocoin fully implements it, likely because of the complexity of how
 it changes network and mempool internals.
 
-Hush was motivated by the question "What is the simplest way to defeat the first timestamp estimator?". We also wanted to optimize for very bad conditions,
-of Sybil Attacks that run 50-99% of nodes, not small Sybil Attacks when the attacker runs less than half the nodes in the network. Implementing Dandelion
+Hush was motivated by the question "What is the simplest way to defeat the first timestamp estimator?". We also wanted to optimize for relatively bad conditions,
+of Sybil Attacks that run up to 49% of nodes. Sybil attacks of 50% or more of the network are very powerful and no cryptocoin, to our knowledge, has come up with
+a method to protect against them. Implementing Dandelion
 requires changing how the mempool works and we also wanted to avoid that, since it's very hard to know if new vulnerabilities are being introduced.
 
 Hush's method to defeat the FTE is choosing a *random subset of peers* at transaction relay time, and only relaying the transaction to those peers.
@@ -114,19 +117,22 @@ latency is on the order of seconds, it does not slow down anything noticeable to
 down in case of odd numbers. So for instance, if a Hush node has 5 outbound connections, it will relay to a random subset of 2 of them, which is 40%. Rounding down
 helps make things harder on the attacker for nodes with small numbers of outbound connections, such as those who have only recently joined the network.
 
-Imagine a scenario where the network is 50% Sybil nodes, which are using the FTE to correlate which nodes created which transactions, i.e. creating 
+Imagine a scenario where the network is 25% Sybil nodes, which are using the FTE to correlate which nodes created which transactions, i.e. creating 
 a mapping between IP address and transaction id. With the Hush transaction relay algorithm, it's possible for a Sybil node to be directly connected to the node
 making a transaction, yet that node might not relay the transaction to the Sybil node, since that outbound node is not one of the randomly 50% of peers that is chosen
 when the transaction is made.
 
-If we assume that 50% of our nodes are Sybil nodes and we only relay our transaction to 50% of our connections, then on average, the FTE will only be correct
-25% of the time. As we assume the Sybil Attacker has a larger percentage of network nodes, the FTE will increase in accuracy but never be more than 50% accurate, which is
-not very good at all.
+If we assume that 25% of our nodes are Sybil nodes and we only relay our transaction to 50% of our connections, then on average, the FTE will only be correct
+12.5% of the time. As we assume the Sybil Attacker has a larger percentage of network nodes, the FTE will increase in accuracy but never be more than 50% accurate, unless
+it has Sybile nodes which comprise more than 50% of the network.
 
 Nodes with small numbers of connections also do well against the attacker. If a node has only 3 outbound connections and makes a transaction, it will only relay it to 1
-node, which is 33%. If we assume a Sybil Attacker with 50% of network nodes, the FTE will only be accurate about 17% of the time in trying to decide which node made the
-transaction. In the same situation, a Hush node with 15 connections will result in an FTE with ~23% accuracy.
+node, which is 33.3% of it's peers. If we assume a Sybil Attacker with 25% of network nodes, the FTE will only be accurate about `25% * 33% =~ 8.3%` of the time in trying to decide which node made the
+transaction. In the same situation, a Hush node with 15 connections will result in an FTE with `25% * 7/15 =~ 11.6%` accuracy.
+
+We note that, as mentioned by Guilia Fanti, if a Sybil Attacker comprises say, 99% of nodes on the network, then they will almost always be one of the peers of every
+other node on the network, and the above defense fails.
 
 ## Tor P2P Support
 
-Tor v2 was deprecated by the Tor network and they have changed to v3, and Hush is currently in the process of merging Tor v3 support from BTC Core.
+Tor v2 was deprecated by the Tor network and they have changed to v3, and Hush is currently in the process of merging Tor v3 support from BTC Core on the `p2p` branch of hush3.git.
