@@ -51,10 +51,10 @@ First we need to setup the Hush configuration on our computer.
 1. Next we start the hush daemon (hushd) at the command line with special options to enable a stratum server.
 
 	```
-	./src/hushd -stratum -debug=stratum -stratumallowip=192.168.0.0/16 &> hush-stratum.log
+	./src/hushd -stratum -stratumallowip=192.168.0.0/16 &> hush-stratum.log
 	```	
 
-	Substitute your hushd path and your local network appropriately in the above command.
+	Substitute your hushd path and your local network appropriately in the above command. If you are renting hashrate and do not know the IP addresses that will connect, you can allow any IP address to connect with `-stratumallowip=0.0.0.0/0`
 
 1. Check that the stratum is started by seeing that it is listening on the correct port (default 19031).
 
